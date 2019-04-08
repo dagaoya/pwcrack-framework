@@ -1,10 +1,10 @@
 # 0x00 pwcrack-framework
-pwcrack-framework 是一个用Ruby编写的密码自动破解框架，目前提供了26个在线破解和8个离线破解接口，支持24种算法破解
+pwcrack-framework 是一个用Ruby编写的密码自动破解框架，目前提供了24个在线破解和8个离线破解接口，支持29种算法破解
 
 项目地址：[https://github.com/L-codes/pwcrack-framework](https://github.com/L-codes/pwcrack-framework)
 
 # 0x01 Features
-- Ruby2.5+ (tested with Ruby2.5.3 & Ruby 2.6.3)
+- Ruby2.5+ (tested with Ruby2.5.3 & Ruby 2.6.2)
 - 支持Linux/OSX/Windows平台运行
 - 支持在线和离线的进行破解密码明文
 - 支持自动分析密文算法调用插件破解
@@ -14,10 +14,12 @@ pwcrack-framework 是一个用Ruby编写的密码自动破解框架，目前提�
 # 0x02 Installing
 ```
 $ git clone https://github.com/L-codes/pwcrack-framework
-$ gem install faraday_middleware faraday-cookie_jar rainbow ruby-progressbar msgpack
+$ cd pwcrack-framework
+$ bundle install
 
 # banner view
-$ pwcrack banner
+$ ./pwcrack banner
+
 
                                              
           "$$$$$$''  'M$  '$$$@m            
@@ -28,7 +30,7 @@ $ pwcrack banner
                 m$$$$  $$$$,                
                 $$$$@  '$$$$_         pwcrack-framework
              '1t$$$$' '$$$$<               
-          '$$$$$$$$$$'  $$$$          version 1.8.2
+          '$$$$$$$$$$'  $$$$          version 1.9.4
                '@$$$$'  $$$$'                
                 '$$$$  '$$$@                 
              'z$$$$$$  @$$$                  
@@ -44,19 +46,29 @@ $ pwcrack banner
 
                        [ Plugin Count ] 
 
-         Online Plugin: 26        Offline Plugin: 8
+         Online Plugin: 24        Offline Plugin: 8
 
                   [ Algorithm Plugin Count ] 
 
-         serv_u: 25             md5: 25            sha1: 16
-        dedecms: 13          md5_16: 13           mysql:  9
-         sha512:  8          sha256:  8            ntlm:  8
-         mysql3:  7             md4:  6          sha384:  5
-             lm:  3       whirlpool:  2       ripemd160:  1
-      filezilla:  1          sha224:  1     cisco_type7:  1
-  juniper_type9:  1         foxmail:  1        foxmail6:  1
-            gpp:  1       cisco_vpn:  1      h3c_huawei:  1
+         serv_u: 22             md5: 22            sha1: 15
+         md5_16:  9         dedecms:  9          sha256:  8
+         sha512:  8           mysql:  7            ntlm:  6
+         mysql3:  5             md4:  5          sha384:  5
+             lm:  3          sha224:  2       filezilla:  1
+      whirlpool:  1        ripmd320:  1       ripemd256:  1
+      ripemd160:  1       ripemd128:  1            mdc2:  1
+            md2:  1     cisco_type7:  1   juniper_type9:  1
+        foxmail:  1        foxmail6:  1             gpp:  1
+      cisco_vpn:  1      h3c_huawei:  1
 
+
+
+# Install in Termux
+$ pkg install git ruby ruby-dev clang make libffi-dev
+$ gem install bundler
+$ git clone https://github.com/L-codes/pwcrack-framework
+$ cd pwcrack-framework
+$ bundle update --bundler
 ```
 
 # 0x03 Example usage

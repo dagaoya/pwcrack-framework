@@ -4,15 +4,8 @@
 # Author L
 #
 
-require 'json'
-
-begin
-  require 'faraday_middleware'
-  require 'faraday-cookie_jar'
-rescue LoadError
-  puts  '[*] Lack of dependent libraries.'
-  abort '[-] Please execute: gem install faraday_middleware faraday-cookie_jar'
-end
+require 'faraday_middleware'
+require 'faraday-cookie_jar'
 
 begin
   require 'typhoeus'
@@ -72,7 +65,7 @@ module HTTP
   end
 
   def post_json(path, data, headers = {}, &block)
-    data = data.to_json if data.is_a? Hash
+    data = JSON.dump(data) if data.is_a? Hash
     headers.merge! 'Content-Type': 'application/json; charset=utf-8'
     request_method(:post, path, data, headers, &block)
   end

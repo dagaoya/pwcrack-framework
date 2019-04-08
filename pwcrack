@@ -4,23 +4,13 @@
 # Author L
 #
 
-Version = '1.8.2'
+Version = '1.9.4'
 Project = 'pwcrack-framework'
-
-require 'rainbow/refinement'
-using Rainbow
-require 'msgpack'
-
-trap("INT"){ puts "\r[!!!] Interrupt. ".red; exit! 1 }
 
 ROOT = File.dirname(File.realpath(__FILE__))
 
-# load all external
-#Dir["#{ROOT}/external/**/*.rb"].each do |external|
-#  require_relative external
-#end
-
 # load lib
+require_relative 'lib/env'
 require_relative 'lib/str_ext'
 require_relative 'lib/cli'
 require_relative 'lib/core'

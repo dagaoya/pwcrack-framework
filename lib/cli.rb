@@ -5,7 +5,6 @@
 #
 
 require 'optparse'
-require 'base64'
 require_relative 'passwd'
 require_relative 'cli_cmd/banner'
 require_relative 'cli_cmd/updatedb'
@@ -25,8 +24,8 @@ module CLI
     retry_interval: 0.5,
              proxy: nil,
             select: nil,
-           timeout: 5,
-      open_timeout: 10
+           timeout: 4,
+      open_timeout: 8
     }
     optparser = OptionParser.new do |opts|
       opts.banner = 'Usage: ./pwcrack [options] (ciphertext|gets|banner|updatedb) [algorithms...]'
@@ -82,7 +81,6 @@ module CLI
     when 'add'
       self.add args
     when 'gets'
-      require 'readline'
       cipher = Readline.readline("Cipher Text\n#{'>>'.blue} ".bold)
       puts
       exit 0 if ! cipher or cipher.empty?
